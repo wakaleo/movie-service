@@ -54,7 +54,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/{id}", method=DELETE)
-    @ApiOperation(value = "Removing a movie from the catalog", httpMethod = "POST")
+    @ApiOperation(value = "Removing a movie from the catalog", httpMethod = "DELETE")
     public void delete(@PathVariable String id) {
         repository.delete(id);
     }

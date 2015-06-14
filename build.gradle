@@ -85,3 +85,11 @@ task integrationTests(type: Test) {
     include '**/integration/**'
     maxParallelForks = 4
 }
+
+cloudfoundry {
+    target = "https://api.run.pivotal.io"
+    org = "wakaleo"
+    space = "production"
+    file = file("build/libs/movie-service-${jar.version}.jar")
+//    uri = "w.cfapps.io"
+}
