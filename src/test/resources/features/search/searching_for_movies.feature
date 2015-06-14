@@ -1,4 +1,4 @@
-Feature: Searching for movies
+  Feature: Searching for movies
   In order to sell more movies
   As an online movie seller
   I want viewers to be able to find the movies they are interested in quickly and easily
