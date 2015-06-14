@@ -23,7 +23,7 @@ import static net.serenitybdd.rest.SerenityRest.rest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ContextConfiguration(loader = SpringApplicationContextLoader.class,
-        classes = MovieServiceApplication.class)
+                      classes = MovieServiceApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
 public class SearchSteps {

@@ -42,6 +42,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile "org.apache.commons:commons-lang3:3.4"
+//    compile "com.mangofactory:swagger-springmvc:1.0.2"
+
+    compile 'io.springfox:springfox-swagger2:2.0.1'
+    compile 'io.springfox:springfox-swagger-ui:2.0.1'
 
 //    compile("org.springframework.boot:spring-boot-starter-data-rest")
 //    compile("org.springframework.boot:spring-boot-starter-integration")
@@ -70,4 +74,14 @@ eclipse {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
+}
+
+test {
+    exclude '**/integration/**'
+    maxParallelForks = 4
+}
+
+task integrationTests(type: Test) {
+    include '**/integration/**'
+    maxParallelForks = 4
 }
