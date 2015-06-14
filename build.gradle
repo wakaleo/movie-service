@@ -41,8 +41,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile "org.apache.commons:commons-lang3:3.4"
-//    compile "com.mangofactory:swagger-springmvc:1.0.2"
 
     compile 'io.springfox:springfox-swagger2:2.0.1'
     compile 'io.springfox:springfox-swagger-ui:2.0.1'
@@ -88,8 +88,6 @@ task integrationTests(type: Test) {
 
 cloudfoundry {
     target = "https://api.run.pivotal.io"
-    org = "wakaleo"
     space = "production"
     file = file("build/libs/movie-service-${jar.version}.jar")
-//    uri = "w.cfapps.io"
 }
