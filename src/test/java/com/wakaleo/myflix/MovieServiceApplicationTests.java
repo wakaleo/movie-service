@@ -1,5 +1,6 @@
 package com.wakaleo.myflix;
 
+import com.wakaleo.myflix.movies.MovieServiceApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;

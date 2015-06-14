@@ -41,4 +41,14 @@ public class Movie {
     public List<String> getActors() {
         return actors;
     }
+
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Movie{");
+        sb.append("title='").append(title).append('\'');
+        sb.append(", director='").append(director).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
