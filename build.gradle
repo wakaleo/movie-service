@@ -3,7 +3,9 @@ buildscript {
         springBootVersion = '1.2.4.RELEASE'
     }
     repositories {
+        jcenter()
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
@@ -31,10 +33,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    jcenter()
     mavenCentral()
+    mavenLocal()
 }
 
-def serenityCoreVersion = "1.0.53"
+def serenityCoreVersion = "1.0.56"
 def cucumberVersion = "1.2.2"
 
 dependencies {
@@ -78,13 +82,25 @@ task wrapper(type: Wrapper) {
 
 test {
     exclude '**/integration/**'
+    exclude '**/features/**'
     maxParallelForks = 4
 }
 
 task integrationTests(type: Test) {
     include '**/integration/**'
-    maxParallelForks = 4
 }
+
+task acceptanceTests(type: Test) {
+    include '**/features/**'
+}
+
+acceptanceTests.mustRunAfter integrationTests
+integrationTests.mustRunAfter test
+aggregate.mustRunAfter acceptanceTests
+
+task verify {}
+
+verify.dependsOn('test', 'integrationTests', 'acceptanceTests', 'aggregate')
 
 cloudfoundry {
     target = "https://api.run.pivotal.io"

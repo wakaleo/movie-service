@@ -5,7 +5,7 @@ Feature: Adding new movies
 
   Scenario: Adding movies
     Given the following movie has just come out
-      | title                 | director        | actors                            |
-      | Jurassic World        | Colin Trevorrow | Chris Pratt, Bryce Dallas Howard, |
+      | title          | director        | actors                           |
+      | Jurassic World | Colin Trevorrow | Chris Pratt, Bryce Dallas Howard |
     When I add this movie to the catalog
     Then I should be able to find it in the catalog

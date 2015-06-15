@@ -40,51 +40,17 @@ public class MovieServiceApplication {
     }
 
     @Bean
-    public Docket petApi() {
+    public Docket moviesApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
-                .directModelSubstitute(LocalDate.class,
-                        String.class)
-                .genericModelSubstitutes(ResponseEntity.class)
-                .alternateTypeRules(
-                        newRule(typeResolver.resolve(DeferredResult.class,
-                                        typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
-                                typeResolver.resolve(WildcardType.class)))
-                .useDefaultResponseMessages(false)
-                .globalResponseMessage(RequestMethod.GET,
-                        newArrayList(new ResponseMessageBuilder()
-                                .code(500)
-                                .message("500 message")
-                                .responseModel(new ModelRef("Error"))
-                                .build()))
-//                .securitySchemes(newArrayList(apiKey()))
-//                .securityContexts(newArrayList(securityContext()))
-                ;
+                .directModelSubstitute(LocalDate.class, String.class)
+                .genericModelSubstitutes(ResponseEntity.class);
     }
 
     @Autowired
     private TypeResolver typeResolver;
-
-//    private ApiKey apiKey() {
-//        return new ApiKey("mykey", "api_key", "header");
-//    }
-//
-//    private SecurityContext securityContext() {
-//        return SecurityContext.builder()
-//                .securityReferences(defaultAuth())
-//                .forPaths(PathSelectors.regex("/movies.*"))
-//                .build();
-//    }
-//
-//    List<SecurityReference> defaultAuth() {
-//        AuthorizationScope authorizationScope
-//                = new AuthorizationScope("global", "accessEverything");
-//        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-//        authorizationScopes[0] = authorizationScope;
-//        return newArrayList(new SecurityReference("mykey", authorizationScopes));
-//    }
 }

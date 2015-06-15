@@ -8,7 +8,5 @@ import java.util.List;
 public interface MovieRepository extends MongoRepository<Movie, String> {
 
     public List<Movie> findByDirector(String director);
-//    public List<Movie> findByActor(String actor);
-//    public List<Movie> findByKeyword(String keyword);
-
+    public List<Movie> findByActors(String actor);
 }
