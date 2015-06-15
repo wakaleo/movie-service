@@ -54,7 +54,7 @@ public class CatalogSteps {
                 .content(newMovie)
                 .post("/movies")
                 .then().statusCode(200)
-                .extract().jsonPath().getString("id");
+                .and().extract().jsonPath().getString("id");
     }
 
     @Then("I should be able to find it in the catalog")

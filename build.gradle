@@ -24,7 +24,6 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply plugin: 'cloudfoundry'
 
-
 jar {
     baseName = 'movie-service'
     version = '0.0.1-SNAPSHOT'
@@ -39,7 +38,6 @@ repositories {
 }
 
 def serenityCoreVersion = "1.0.56"
-def cucumberVersion = "1.2.2"
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -51,18 +49,12 @@ dependencies {
     compile 'io.springfox:springfox-swagger2:2.0.1'
     compile 'io.springfox:springfox-swagger-ui:2.0.1'
 
-//    compile("org.springframework.boot:spring-boot-starter-data-rest")
-//    compile("org.springframework.boot:spring-boot-starter-integration")
-//    compile("org.springframework.boot:spring-boot-starter-security")
-//    compile("org.springframework.boot:spring-boot-starter-ws")
-
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
     testCompile "net.serenity-bdd:serenity-spring:${serenityCoreVersion}"
     testCompile "net.serenity-bdd:serenity-rest-assured:${serenityCoreVersion}"
     testCompile "net.serenity-bdd:serenity-cucumber:1.0.16"
     testCompile "org.codehaus.groovy:groovy-all:2.3.6"
-//    testCompile "info.cukes:cucumber-groovy:$cucumberVersion"
     testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
     testCompile "org.spockframework:spock-spring:0.7-groovy-2.0"
     testCompile "org.assertj:assertj-core:3.0.0"
