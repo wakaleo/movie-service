@@ -14,3 +14,14 @@
       | title                 | director       | actors                   |
       | Letters from Iwo Jima | Clint Eastwood | Ken Watanabe             |
       | Gran Torino           | Clint Eastwood | Clint Eastwood, Bee Vang |
+
+    Scenario: Search movies by title
+      Given the catalog has the following movies:
+        | title                 | director       | actors                        |
+        | Gladiator             | Ridley Scott   | Russel Crowe, Joaquin Phoenix |
+        | Letters from Iwo Jima | Clint Eastwood | Ken Watanabe                  |
+        | Gran Torino           | Clint Eastwood | Clint Eastwood, Bee Vang      |
+      When I search for a movie called 'Gladiator'
+      Then I should be presented with the following movie:
+        | title                 | director       | actors                   |
+        | Gladiator             | Ridley Scott   | Russel Crowe, Joaquin Phoenix |

@@ -68,7 +68,13 @@ public class SearchSteps {
         matchingMovies = ImmutableList.copyOf(movies);
     }
 
-    @Then("I should be presented with the following movies:")
+    @When("I search for a movie called '(.*)'")
+    public void searchByTitle(String title) {
+        Movie  matchingMovie = rest().when().get("/movies/findByTitle/" + title).as(Movie.class);
+        matchingMovies = ImmutableList.of(matchingMovie);
+    }
+
+    @Then("I should be presented with the following movies?:")
     public void shouldSeeMovies(List<Movie> expectedMovies) {
         assertThat(matchingMovies).usingElementComparator(byTitleAndDirector()).containsOnlyElementsOf(expectedMovies);
     }
