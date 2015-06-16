@@ -94,6 +94,7 @@ task verify {}
 
 verify.dependsOn('test', 'integrationTests', 'acceptanceTests', 'aggregate')
 
+
 cloudfoundry {
     target = "https://api.run.pivotal.io"
     space = "production"
